@@ -57,7 +57,7 @@ const LoginForm = ({
             <div className='error'>{formik.errors.password}</div>
           )}
         </div>
-        <div className='remember-forgot' style={{ marginTop: "8px" }}>
+        <div className='remember-forgot'>
           <label>
             <input type='checkbox' /> Remember me
           </label>
