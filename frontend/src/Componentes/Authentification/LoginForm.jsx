@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
+import ForgotPasswordForm from "./ForgotPasswordForm";
 
 const LoginForm = ({
   email,
@@ -8,6 +9,7 @@ const LoginForm = ({
   setPassword,
   onSubmit,
   switchToRegister,
+  onForgotPassword,
 }) => (
   <div className='form-box login'>
     <form onSubmit={onSubmit}>
@@ -36,7 +38,7 @@ const LoginForm = ({
         <label>
           <input type='checkbox' /> Remember me
         </label>
-        <a href='#'>Forgot password?</a>
+        <a href='#' onClick={onForgotPassword}>Forgot password?</a>
       </div>
       <button type='submit'>Login</button>
       <div className='register-link'>
