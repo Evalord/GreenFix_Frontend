@@ -11,19 +11,19 @@
 }
 
 .wrapper {
-    position: relative;
-    width: 420px;
-    height: 450px;
-    background: seagreen;
-    border: 2px solid rgba(255, 255, 255, 1);
-    backdrop-filter: blur(30px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    border-radius: 10px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    transition: height .2s ease;
+  position: relative;
+  width: 420px;
+  height: 450px;
+  background: var(--blur-bg);
+  border: 1px solid var(--white);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.3s ease;
 }
 
 .wrapper.active {
