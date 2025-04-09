@@ -1,131 +1,168 @@
-.wrapper {
-    position: relative;
-    width: 420px;
-    height: 450px;
-    background: seagreen;
-    border: 2px solid rgba(255, 255, 255, 1);
-    backdrop-filter: blur(30px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    border-radius: 10px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    transition: height .2s ease;
+:root {
+  --green-primary: #4caf50; /* Vert marque */
+  --green-dark: #2e7d32; /* Vert foncé - hover ou accent */
+  --green-light: #a5d6a7; /* Vert clair - arrière-plan doux */
+  --white: #ffffff;
+  --white-faded: rgba(255, 255, 255, 0.1);
+  --text-light: #c2c0c0;
+  --text-dark: #333333;
+  --blur-bg: rgba(75, 184, 122, 0.15);
+  --error-color: #fd3835;
 }
 
-.wrapper.active{
-    height: 520px;
+.wrapper {
+  position: relative;
+  width: 420px;
+  height: 450px;
+  background: var(--blur-bg);
+  border: 1px solid var(--white);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.wrapper.active {
+  height: 520px;
 }
 
 .wrapper .form-box {
-    width: 100%;
-    padding: 40px;
+  width: 100%;
+  padding: 40px;
 }
 
-.wrapper .form-box.login{
-    transition: translate .18s ease;
-    translate: 0;
+.wrapper .form-box.login {
+  transition: transform 0.2s ease;
+  transform: translateX(0);
 }
 
 .wrapper.active .form-box.login {
-    transition: none;
-    translate: -400px;
+  transition: none;
+  transform: translateX(-100%);
 }
 
 .wrapper .form-box.register {
-    position: absolute;
-    transition: none;
-    translate: 400px;
+  position: absolute;
+  transition: none;
+  transform: translateX(100%);
 }
 
 .wrapper.active .form-box.register {
-    transition: translate .18s ease;
-    translate: 0;
+  transition: transform 0.2s ease;
+  transform: translateX(0);
 }
 
 form h1 {
-    font-size: 36px;
-    text-align: center;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--white);
 }
 
-form .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0; 
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 25px 0;
 }
 
 .input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .1);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 45px 12px 20px;
+  background: transparent;
+  border: 1px solid var(--white-faded);
+  border-radius: 40px;
+  font-size: 16px;
+  color: var(--white);
+  transition: border 0.3s ease;
 }
 
 .input-box input::placeholder {
-    color: #fff;
+  color: var(--text-light);
+}
+
+.input-box input:focus {
+  border: 2px solid var(--white);
+  outline: none;
 }
 
 .input-box .icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    translate: 0 -50%;
-    font-size: 16px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--white);
 }
 
 form .remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: -10px 0 20px;
+  margin-top: 10px;
 }
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 4px;
+
+.remember-forgot label input {
+  accent-color: var(--green-primary);
+  margin-right: 6px;
 }
+
 .remember-forgot a {
-    color: #fff;
-    text-decoration: none;
+  color: var(--white);
+  text-decoration: none;
 }
 
 .remember-forgot a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 form button {
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 700;
+  width: 100%;
+  height: 45px;
+  background: var(--green-primary);
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--white);
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: var(--green-dark);
 }
 
 form .register-link {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
+  font-size: 14px;
+  text-align: center;
+  margin: 20px 0 15px;
 }
 
 .register-link p a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .register-link p a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
+/* Error Styling */
+.error {
+  color: var(--error-color);
+  padding: 5px 0 0 5px;
+  font-size: 13px;
+}
+
+/* .error .last {
+  margin-bottom: 4px;
+} */
