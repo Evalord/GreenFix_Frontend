@@ -1,14 +1,9 @@
 import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-import ForgotPasswordForm from "./ForgotPasswordForm";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const LoginForm = ({
-  email,
-  setEmail,
-  password,
-  setPassword,
   onSubmit,
   switchToRegister,
   onForgotPassword,
@@ -36,7 +31,7 @@ const LoginForm = ({
 
   return (
     <div className='form-box login'>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <h1>Login</h1>
         <div className='input-box'>
           <input

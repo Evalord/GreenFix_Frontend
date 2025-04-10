@@ -49,6 +49,10 @@ const LoginRegister = () => {
     }
   };
 
+  const handleBack = () => {
+    setIsForgotPassword(false);
+  };
+
   return (
     <div className={`wrapper ${isRegister ? "active" : ""}`}>
       {!isForgotPassword ? (
@@ -76,7 +80,9 @@ const LoginRegister = () => {
       )
     ) : (
       <ForgotPasswordForm
-      onSubmit={handleForgotPassword}/>
+        onSubmit={handleForgotPassword}
+        switchToLogin={handleBack}
+      />
     )}
     </div>
   );

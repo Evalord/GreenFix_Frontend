@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 
-const RegisterForm = ({ switchToLogin }) => {
+const RegisterForm = ({ onSubmit, switchToLogin }) => {
   const formik = useFormik({
     initialValues: {
       username: "",
