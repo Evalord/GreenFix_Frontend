@@ -4,7 +4,7 @@ import LoginForm from "../../Componentes/Authentification/LoginForm";
 import RegisterForm from "../../Componentes/Authentification/RegisterForm";
 import ForgotPasswordForm from "../../Componentes/Authentification/ForgotPasswordForm";
 import { useNavigate } from "react-router-dom";
-import { loginUser, registerUser, sendResetPasswordLink } from "../../Services/authService";
+import { loginUser, registerUser, sendResetPasswordLink } from "../../Componentes/Services/authService";
 
 const LoginRegister = () => {
   const [isRegister, setIsRegister] = useState(false);

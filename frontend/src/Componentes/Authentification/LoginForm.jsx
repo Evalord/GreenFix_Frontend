@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const LoginForm = ({
-  onSubmit,
   switchToRegister,
   onForgotPassword,
 

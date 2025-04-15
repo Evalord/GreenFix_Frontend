@@ -14,4 +14,8 @@ const sendResetPasswordLink = async (email) => {
   return await axios.post(`${API_URL}/auth/forgot-password`, { email })
 };
 
-export { loginUser, registerUser, sendResetPasswordLink};
+const logout = () => {
+  localStorage.removeItem('user');
+}
+
+export { loginUser, registerUser, sendResetPasswordLink, logout};
