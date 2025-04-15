@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginRegister from "./Pages/Auth/LoginRegister";
-
+import { ToastContainer } from "react";
 function App() {
   return (
     <Router>
