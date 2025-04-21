@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
 
 const Dashboard = () => {
-
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [metrics, setMetrics] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,11 +23,49 @@ const Dashboard = () => {
       .get("http://localhost:5000/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setUser(res.data))
-      .catch(() => navigate("/login"));
+      .then((res) =>{
+        setUser(res.data);
+        setLoading(false);
+        return axios.get("http://localhost:5000/api/users", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      })
+      .then((res) => {
+        setUsers(res.data); 
+        return axios.get("http://localhost:5000/api/metrics", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      })
+      .then((res) => {
+        setMetrics(res.data); 
+        setLoading(false);
+      })
+      .catch((err) =>{
+        setError(err.response?.data?.message || "An error occurred.");
+        setLoading(false);
+        navigate("/login")
+      });
   }, [navigate]);
 
-  if (!user) return <p className=" loading">Loading...</p>
+  if (loading) return <p className="loading">Loading...</p>;
+  if (error) return <p className="error">{error}</p>;
+
+  const handleRoleChange = (userId, newRole) => {
+    // Function to handle role change
+    axios
+      .put(`http://localhost:5000/api/users/${userId}/role`, { role: newRole }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(() => {
+        setUsers((prevUsers) =>
+          prevUsers.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
+        );
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Failed to update role.");
+      });
+  };
 
   return (
   <div className="dashboard">
@@ -35,11 +76,55 @@ const Dashboard = () => {
           <p className="dashboard-role">Role: {user.role}</p>
         </div>
         <button
-          onClick={() => localStorage.clear() || navigate("/login")}
+          onClick={() =>{
+            localStorage.clear(); 
+            navigate("/login")}
+          }
           className="logout-button"
         >
           Logout
         </button>
+      </div>
+      {/* User Management */}
+      <div className="user-management">
+        <h3>User Management</h3>
+        <table className="user_table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((u) => (
+              <tr key={u.id}>
+              <td>{u.id}</td>
+              <td>{u.name}</td>
+              <td>
+                <select
+                  value={u.role}
+                  onChange={(e) => handleRoleChange(u.id, e.target.value)}
+                >
+                  <option value="inhabitant">Inhabitant</option>
+                  <option value="caretaker">Caretaker</option>
+                  <option value="collector1">Collector 1</option>
+                  <option value="collector2">Collector 2</option>
+                  <option value="recycler">Recycler</option>
+                  <option value="manufacturer">Manufacturer</option>
+                  <option value="distributor">Distributor</option>
+                </select>
+              </td>
+              <td>
+                <button onClick={() => handleRoleChange(u.id, u.role)}>
+                 Update Role
+                 </button>
+               </td>
+             </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Role-based message */}

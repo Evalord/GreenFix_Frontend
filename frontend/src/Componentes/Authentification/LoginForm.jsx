@@ -4,11 +4,14 @@ import { useFormik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import InputField from "./../Field/InputFiels";
+import { useAuth } from "./AuthContext";
 
 const LoginForm = ({ switchToRegister }) => {
   const [errorMessage, setErrorMessage] = React.useState("");
-  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false); // État pour la visibilité du mot de passe
-
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false); 
+  const { login } = useAuth(); 
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
@@ -27,6 +30,7 @@ const LoginForm = ({ switchToRegister }) => {
         .required("Le mot de passe est obligatoire."),
     }),
     onSubmit: async (values) => {
+      setIsSubmitting(true);
       try {
         const response = await axios.post("http://localhost:5000/api/login", {
           email: values.email,
@@ -34,11 +38,14 @@ const LoginForm = ({ switchToRegister }) => {
         });
         console.log(response.data);
         setErrorMessage("");
+        login(values.email, values.password);
       } catch (error) {
         setErrorMessage(
           error.response?.data?.message ||
             "Une erreur est survenue. Veuillez réessayer."
         );
+      } finally {
+        setIsSubmitting(false);
       }
     },
   });
@@ -57,7 +64,7 @@ const LoginForm = ({ switchToRegister }) => {
         />
         <div className='input-box'>
           <input
-            type={isPasswordVisible ? "text" : "password"} // Basculer entre "text" et "password"
+            type={isPasswordVisible ? "text" : "password"} 
             placeholder='Password'
             {...formik.getFieldProps("password")}
           />
@@ -77,8 +84,8 @@ const LoginForm = ({ switchToRegister }) => {
           </label>
           <a href='#'>Forgot password?</a>
         </div>
-        <button type='submit' disabled={false}>
-          Login
+        <button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? "Logging in..." : "Login"}
         </button>
         <div className='register-link'>
           <p>
