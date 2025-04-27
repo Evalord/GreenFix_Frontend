@@ -11,13 +11,13 @@ const LoginRegister = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const { login, register } = useAuth();
-  const navigate = useNavigate();
+  
 
-  const handleLogin = () => {
+ const handleLogin = () => {
     // Call the login function and navigate to the dashboard
     login(email, password) 
       .then(() => {
-        navigate('/dashboard');
+        console.log("Login successful");
       })
       .catch((error) => {
         console.error("Login failed:", error);
@@ -29,7 +29,8 @@ const LoginRegister = () => {
     register(username, email, password) 
       .then(() => {
         login(email, password);
-        navigate('/dashboard');
+        console.log("Registration successful");
+       // navigate('/dashboard');
       })
       .catch((error) => {
         console.error("Registration failed:", error);

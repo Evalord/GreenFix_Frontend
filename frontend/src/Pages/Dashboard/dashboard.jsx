@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import {jwtDecode} from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import React from "react"; 
 import "./dashboard.css";
+import { useAuth } from "../../Componentes/Authentification/AuthContext";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null);
-  const [users, setUsers] = useState([]);
-  const [metrics, setMetrics] = useState({});
-  const navigate = useNavigate();
+  const {user} = useAuth();
 
-  useEffect(() => {
+ 
+
+  const users = [
+    //{ id: 1, name: "John Doe", role: "inhabitant" },
+   // { id: 2, name: "Jane Smith", role: "collector1" },
+    { id: 3, name: "Alice Johnson", role: "Admin" },
+    //{ id: 4, name: "Bob Brown", role: "manufacturer" },
+    //{ id: 5, name: "Charlie Davis", role: "distributor" },
+    //{ id: 6, name: "Eve White", role: "caretaker" },
+  ];
+
+  /*useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return navigate("/login");
 
@@ -65,30 +69,27 @@ const Dashboard = () => {
         console.error(err);
         alert("Failed to update role.");
       });
-  };
+  };*/
 
   return (
   <div className="dashboard">
   {/* Header */}
     <div className="dashboard-header">
         <div>
-          <h2 className="dashboard-title">Welcome, {user.name}</h2>
-          <p className="dashboard-role">Role: {user.role}</p>
+          {/*<h2 className="dashboard-title">Welcome, {user.name}</h2>
+          <p className="dashboard-role">Role: {user.role}</p> */}
+          <h2 className="dashboard-title">Welcome, Admin</h2>
+          <p className="dashboard-role">Role: Admin</p>
         </div>
-        <button
-          onClick={() =>{
-            localStorage.clear(); 
-            navigate("/login")}
-          }
-          className="logout-button"
-        >
+        <button className="logout-button" >
           Logout
         </button>
       </div>
       {/* User Management */}
       <div className="user-management">
         <h3>User Management</h3>
-        <table className="user_table">
+        <p>Feature coming soon...</p>
+       {/* <table className="user_table">
           <thead>
             <tr>
               <th>ID</th>
@@ -124,19 +125,21 @@ const Dashboard = () => {
              </tr>
             ))}
           </tbody>
-        </table>
+        </table>*/}
       </div>
 
       {/* Role-based message */}
       <div className="role-based-view">
-        {user.role === "inhabitant" && (
+        <h3>Role-based Dashboard</h3>
+        <p>Specific views for roles will be added here.</p>
+       {/* {user.role === "inhabitant" && (
           <div className="section">
             <h3>🏠 Inhabitant View</h3>
             <p>You’ve generated 18.2 kg of waste this week.</p>
             <p>Breakdown: Organic: 45%, Plastic: 35%, Others: 20%</p>
           </div>
-        )}
-        {user.role === "caretaker" && (
+        )}*/}
+   {   /*  {user.role === "caretaker" && (
            <div className="section">
            <h3>🧹 Caretaker Dashboard</h3>
            <p>Building waste fill level: 72%</p>
@@ -179,37 +182,42 @@ const Dashboard = () => {
           </div>
         )}
         {user.role === "recycler" && <p>♻️ Recycler Dashboard</p>}
-        {user.role === "manufacturer" && <p>🏭 Manufacturer Dashboard</p>}
+        {user.role === "manufacturer" && <p>🏭 Manufacturer Dashboard</p>}*/}
       </div>
 
       {/* Dashboard Metrics */}
       <div className="metrics-grid">
-        <MetricCard label="Total Waste Collected" value="617.0" unit="Kilo Tonnes" />
+        <h3 className="metrics-title">Dashboard Metrics</h3>
+        <p>Metrics will be displayed here once available.</p>
+       {/*<MetricCard label="Total Waste Collected" value="617.0" unit="Kilo Tonnes" />
         <MetricCard label="Uncollected Waste" value="584.0" unit="Kilo Tonnes" />
         <MetricCard label="Avg Fill Level" value="50%" />
         <MetricCard label="Carbon Footprint" value="1,236.0" unit="MgCO2" />
         <MetricCard label="Segregation Rate" value="33%" />
         <MetricCard label="Electricity Generated" value="779.4" unit="kWh" />
         <MetricCard label="Routes in Use" value="43%" />
-        <MetricCard label="Revenue (This Month)" value="$12,389" />
+        <MetricCard label="Revenue (This Month)" value="$12,389" />*/}
       </div>
 
       {/* Map and Chart */}
       <div className="charts-section">
-        <div className="chart-box">
+        <h3 className="charts-title">Map and Chart Overview</h3>
+        <p>Map and chart components will be added here.</p>
+       { /*<div className="chart-box">
           <h3 className="chart-title">Map Overview</h3>
           <div className="chart-placeholder">[Map Component Here]</div>
         </div>
         <div className="chart-box">
           <h3 className="chart-title">Waste Sequestered (Hourly)</h3>
           <div className="chart-placeholder">[Chart Component Here]</div>
-        </div>
+        </div>*/}
       </div>
 
       {/* Ticket Log */}
       <div className="ticket-log">
         <h3 className="log-title">Ticket Log</h3>
-        <table className="log-table">
+        <p>Ticket log will be displayed here once available.</p>
+      { /* <table className="log-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -234,7 +242,7 @@ const Dashboard = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>*/} 
       </div>
     </div>
   );

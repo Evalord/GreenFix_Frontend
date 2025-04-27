@@ -5,8 +5,12 @@ import axios from "axios";
 import * as Yup from "yup";
 import InputField from "./../Field/InputFiels";
 import { useAuth } from "./AuthContext";
+import {useNavigate} from "react-router-dom"
+
 
 const LoginForm = ({ switchToRegister }) => {
+
+  const navigate =useNavigate();
   const [errorMessage, setErrorMessage] = React.useState("");
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false); 
   const { login } = useAuth(); 
@@ -39,7 +43,9 @@ const LoginForm = ({ switchToRegister }) => {
         console.log(response.data);
         setErrorMessage("");
         login(values.email, values.password);
+        navigate("/dashboard");
       } catch (error) {
+        console.error("error reponse", error.response);
         setErrorMessage(
           error.response?.data?.message ||
             "Une erreur est survenue. Veuillez réessayer."

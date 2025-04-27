@@ -1,7 +1,7 @@
 .dashboard {
     padding: 20px;
-    font-family: sans-serif;
-    background-color: #f4f6f8;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9fafc;
     min-height: 100vh;
   }
   
@@ -9,33 +9,57 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;   
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .dashboard-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #34495e;
   }
   
   .dashboard-role {
-    color: #666;
+    color: #7f8c8d;
+    font-size: 16px;
   }
   
   .logout-button {
-    background-color: #d9534f;
+    background-color: #e74c3c;
     color: white;
     border: none;
-    padding: 10px 14px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .logout-button:hover {
     background-color: #c9302c;
+    transform: scale(1.05);
   }
   
+  .user-management-header {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .user-management h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 15px;
+  }
+
   .role-info {
     margin: 10px 0 20px;
     font-size: 16px;
@@ -64,78 +88,89 @@
   
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     margin-bottom: 30px;
   }
   
   .metric-card {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    background: linear-gradient(to right, #4caf50, #81c784);
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   .metric-card:hover{
+    transform: translate(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     background-color: #e8f5e9;
   }
   
   .metric-label {
-    color: #555;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.9;
   }
   
   .metric-value {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    margin-top: 4px;
-    color: #388e3c;
+    margin-top: 10px;
+    
   }
   
   .charts-section {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
   }
   
   .chart-box {
-    flex: 1 1 45%;
     background: white;
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .chart-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
   
   .chart-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #2c3e50;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #34495e;
   }
   
   .chart-placeholder {
     height: 250px;
-    background: #e0e0e0;
+    background: #ecf0f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #777;
+    color: #7f8c8d;
+    font-size: 16px;
+    border-radius: 8px;
   }
   
   .ticket-log {
     background: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .log-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #2c3e50;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #34495e;
   }
   
   .log-table {
@@ -150,6 +185,11 @@
     text-align: left;
   }
   
+.log-table th {
+  background-color: #f4f6f8;
+  font-weight: bold;
+}
+  
   .loading {
     padding: 40px;
     text-align: center;
@@ -158,10 +198,21 @@
   }
   
   .section {
-    background-color: #e8f5e9;
-    padding: 16px;
-    margin: 16px 0;
-    border-radius: 8px;
+    background-color: #ecf0f1;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
     border-left: 5px solid #388e3c;
+  }
+
+  .section h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+
+  .section p {
+    font-size: 14px;
+    color: #7f8c8d;
   }
   
