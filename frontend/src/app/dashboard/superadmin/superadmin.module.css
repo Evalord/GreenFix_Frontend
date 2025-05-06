@@ -1,0 +1,318 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .welcomeSection {
+    margin-bottom: 0.5rem;
+  }
+  
+  .welcomeSection h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5rem;
+  }
+  
+  .welcomeSection p {
+    color: #666;
+    margin: 0;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .rowContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* User Distribution */
+  .userDistribution {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .distributionItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .distributionLabel {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .colorDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .distributionBar {
+    flex: 1;
+    height: 8px;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .distributionProgress {
+    height: 100%;
+    border-radius: 4px;
+  }
+  
+  .distributionValue {
+    width: 40px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: right;
+  }
+  
+  .green {
+    background-color: #16a34a;
+  }
+  
+  .blue {
+    background-color: #2563eb;
+  }
+  
+  .orange {
+    background-color: #ea580c;
+  }
+  
+  .purple {
+    background-color: #9333ea;
+  }
+  
+  .red {
+    background-color: #dc2626;
+  }
+  
+  .gray {
+    background-color: #6b7280;
+  }
+  
+  /* Activity List */
+  .activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .activityItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .activityItem:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .activityIcon {
+    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .activityContent {
+    flex: 1;
+  }
+  
+  .activityText {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .activityTime {
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  .activityAction {
+    background: none;
+    border: none;
+    color: #16a34a;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .activityAction:hover {
+    text-decoration: underline;
+  }
+  
+  /* Chart Placeholder */
+  .chartPlaceholder {
+    height: 250px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #e5e7eb;
+  }
+  
+  .placeholderText {
+    color: #666;
+    font-size: 0.875rem;
+  }
+  
+  /* System Health */
+  .systemHealth {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .healthItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .healthItem:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .healthLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .healthStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .statusDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .statusGood {
+    color: #16a34a;
+  }
+  
+  .statusGood .statusDot {
+    background-color: #16a34a;
+  }
+  
+  .statusWarning {
+    color: #ea580c;
+  }
+  
+  .statusWarning .statusDot {
+    background-color: #ea580c;
+  }
+  
+  .statusError {
+    color: #dc2626;
+  }
+  
+  .statusError .statusDot {
+    background-color: #dc2626;
+  }
+  
+  .storageBar {
+    width: 100%;
+    height: 8px;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .storageUsed {
+    height: 100%;
+    background-color: #16a34a;
+    border-radius: 4px;
+  }
+  
+  .storageText {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  /* Quick Actions */
+  .quickActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .actionButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .actionButton:hover {
+    background-color: #f0fdf4;
+    border-color: #16a34a;
+    color: #16a34a;
+  }
+  
+  .actionIcon {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .rowContainer {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .statsGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .quickActions {
+      grid-template-columns: 1fr;
+    }
+  }
+  

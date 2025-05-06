@@ -1,0 +1,110 @@
+/* General Styles */
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+  }
+  
+  /* Icon Styles */
+  .stat-icon {
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  
+  /* Info Section */
+  .stat-info {
+    flex: 1;
+  }
+  
+  .stat-title {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0 0 0.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+  
+  .stat-trend {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+  
+  .stat-trend.positive {
+    color: #16a34a;
+  }
+  
+  .stat-trend.negative {
+    color: #dc2626;
+  }
+  
+  /* Color Variants */
+  .green-before {
+    background-color: #16a34a;
+  }
+  
+  .green-icon {
+    background-color: #f0fdf4;
+    color: #16a34a;
+  }
+  
+  .blue-before {
+    background-color: #2563eb;
+  }
+  
+  .blue-icon {
+    background-color: #eff6ff;
+    color: #2563eb;
+  }
+  
+  .orange-before {
+    background-color: #ea580c;
+  }
+  
+  .orange-icon {
+    background-color: #fff7ed;
+    color: #ea580c;
+  }
+  
+  .red-before {
+    background-color: #dc2626;
+  }
+  
+  .red-icon {
+    background-color: #fef2f2;
+    color: #dc2626;
+  }
+  
+  .purple-before {
+    background-color: #9333ea;
+  }
+  
+  .purple-icon {
+    background-color: #faf5ff;
+    color: #9333ea;
+  }
