@@ -5,17 +5,15 @@ import axios from "axios";
 import * as Yup from "yup";
 import InputField from "./../Field/InputFiels";
 import { useAuth } from "./AuthContext";
-import {useNavigate} from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = ({ switchToRegister }) => {
-
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = React.useState("");
-  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false); 
-  const { login } = useAuth(); 
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+  const { login } = useAuth();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  
+
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
@@ -70,7 +68,7 @@ const LoginForm = ({ switchToRegister }) => {
         />
         <div className='input-box'>
           <input
-            type={isPasswordVisible ? "text" : "password"} 
+            type={isPasswordVisible ? "text" : "password"}
             placeholder='Password'
             {...formik.getFieldProps("password")}
           />
@@ -95,10 +93,7 @@ const LoginForm = ({ switchToRegister }) => {
         </button>
         <div className='register-link'>
           <p>
-            Don't have an account?{" "}
-            <a href='#' onClick={switchToRegister}>
-              Sign In
-            </a>
+            Don't have an account? <Link to='/register'>Register</Link>
           </p>
         </div>
       </form>

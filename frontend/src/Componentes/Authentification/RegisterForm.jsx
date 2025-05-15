@@ -4,10 +4,13 @@ import * as Yup from "yup";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import axios from "axios";
 import InputField from "./../Field/InputFiels"; // Assuming you have an InputField component
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const RegisterForm = ({ switchToLogin }) => {
+const RegisterForm = () => {
   const [errorMessage, setErrorMessage] = React.useState("");
   // const [isLoading, setIsLoading] = React.useState(false);
+  let navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -35,6 +38,7 @@ const RegisterForm = ({ switchToLogin }) => {
           password: values.password,
         });
         console.log(res.data);
+        navigate("/login"); // Rediriger vers la page de connexion après l'inscription
         setErrorMessage(""); // Réinitialiser les erreurs en cas de succès
       } catch (error) {
         setErrorMessage(
@@ -83,10 +87,7 @@ const RegisterForm = ({ switchToLogin }) => {
         </button>
         <div className='register-link'>
           <p>
-            Vous avez déjà un compte ?{" "}
-            <a href='#' onClick={switchToLogin}>
-              Login
-            </a>
+            Vous avez déjà un compte ? <Link to='/login'>login</Link>
           </p>
         </div>
       </form>
