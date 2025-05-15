@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useAuth } from "../../Componentes/Authentification/AuthContext";
-import RegisterForm from "../../Componentes/Authentification/RegisterForm";
+import { useAuth } from "../../Hooks/AuthContext";
+import RegisterForm from "../../components/Authentification/RegisterForm";
 import "./LoginRegister.css";
 
-const RegisterPage = ({ switchToLogin }) => {
+const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ const RegisterPage = ({ switchToLogin }) => {
   };
 
   return (
-    <div className="wrapper active">
+    <div className='wrapper active'>
       <RegisterForm
         username={username}
         setUsername={setUsername}
@@ -29,7 +29,6 @@ const RegisterPage = ({ switchToLogin }) => {
         setEmail={setEmail}
         password={password}
         setPassword={setPassword}
-        switchToLogin={switchToLogin}
         onRegister={handleRegister}
       />
     </div>

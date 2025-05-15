@@ -2,14 +2,13 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
-import axios from "axios";
-import InputField from "./../Field/InputFiels"; // Assuming you have an InputField component
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import InputField from "../Field/InputFiels";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Hooks/AuthContext";
 
 const RegisterForm = () => {
   const [errorMessage, setErrorMessage] = React.useState("");
-  // const [isLoading, setIsLoading] = React.useState(false);
+  const { register } = useAuth();
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -29,24 +28,16 @@ const RegisterForm = () => {
         .min(6, "Le mot de passe doit contenir au moins 6 caractères.")
         .required("Le mot de passe est obligatoire."),
     }),
-    onSubmit: async (values) => {
-      // setIsLoading(true);
+    onSubmit: async ({ username, email, password }) => {
       try {
-        const res = await axios.post("http://localhost:5000/api/register", {
-          name: values.username,
-          email: values.email,
-          password: values.password,
-        });
-        console.log(res.data);
-        navigate("/login"); // Rediriger vers la page de connexion après l'inscription
-        setErrorMessage(""); // Réinitialiser les erreurs en cas de succès
+        await register(username, email, password);
+        setErrorMessage("");
+        navigate("/login");
       } catch (error) {
         setErrorMessage(
           error.response?.data?.message ||
             "Une erreur est survenue. Veuillez réessayer."
         );
-      } finally {
-        // setIsLoading(false);
       }
     },
   });
@@ -82,8 +73,8 @@ const RegisterForm = () => {
             <input type='checkbox' /> J'accepte les termes et conditions
           </label>
         </div>
-        <button type='submit' className='submit' disabled={false}>
-          {/* {isLoading ? "Loading..." : "Sign In"} */}Sign In
+        <button type='submit' className='submit'>
+          Sign In
         </button>
         <div className='register-link'>
           <p>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useAuth } from "../../Componentes/Authentification/AuthContext";
-import LoginForm from "../../Componentes/Authentification/LoginForm";
+import { useAuth } from "../../Hooks/AuthContext";
+import LoginForm from "../../components/Authentification/LoginForm";
 import "./LoginRegister.css";
 
 const LoginPage = ({ switchToRegister }) => {

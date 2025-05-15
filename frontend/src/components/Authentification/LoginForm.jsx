@@ -1,13 +1,12 @@
 import React from "react";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useFormik } from "formik";
-import axios from "axios";
 import * as Yup from "yup";
-import InputField from "./../Field/InputFiels";
-import { useAuth } from "./AuthContext";
+import InputField from "../Field/InputFiels";
+import { useAuth } from "../../Hooks/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
-const LoginForm = ({ switchToRegister }) => {
+const LoginForm = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = React.useState("");
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
@@ -31,19 +30,13 @@ const LoginForm = ({ switchToRegister }) => {
         .min(6, "Le mot de passe doit contenir au moins 6 caractères.")
         .required("Le mot de passe est obligatoire."),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async ({ email, password }) => {
       setIsSubmitting(true);
       try {
-        const response = await axios.post("http://localhost:5000/api/login", {
-          email: values.email,
-          password: values.password,
-        });
-        console.log(response.data);
+        await login(email, password);
         setErrorMessage("");
-        login(values.email, values.password);
         navigate("/dashboard");
       } catch (error) {
-        console.error("error reponse", error.response);
         setErrorMessage(
           error.response?.data?.message ||
             "Une erreur est survenue. Veuillez réessayer."

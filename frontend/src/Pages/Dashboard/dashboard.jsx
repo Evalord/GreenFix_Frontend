@@ -1,15 +1,13 @@
-import React from "react"; 
+import React from "react";
 import "./dashboard.css";
-import { useAuth } from "../../Componentes/Authentification/AuthContext";
+import { useAuth } from "../../Hooks/AuthContext";
 
 const Dashboard = () => {
-  const {user} = useAuth();
-
- 
+  const { user, logout } = useAuth();
 
   const users = [
     //{ id: 1, name: "John Doe", role: "inhabitant" },
-   // { id: 2, name: "Jane Smith", role: "collector1" },
+    // { id: 2, name: "Jane Smith", role: "collector1" },
     { id: 3, name: "Alice Johnson", role: "Admin" },
     //{ id: 4, name: "Bob Brown", role: "manufacturer" },
     //{ id: 5, name: "Charlie Davis", role: "distributor" },
@@ -72,24 +70,22 @@ const Dashboard = () => {
   };*/
 
   return (
-  <div className="dashboard">
-  {/* Header */}
-    <div className="dashboard-header">
+    <div className='dashboard'>
+      {/* Header */}
+      <div className='dashboard-header'>
         <div>
-          {/*<h2 className="dashboard-title">Welcome, {user.name}</h2>
-          <p className="dashboard-role">Role: {user.role}</p> */}
-          <h2 className="dashboard-title">Welcome, Admin</h2>
-          <p className="dashboard-role">Role: Admin</p>
+          <h2 className='dashboard-title'>Welcome, {user?.name || "Admin"}</h2>
+          <p className='dashboard-role'>Role: {user?.role || "Admin"}</p>
         </div>
-        <button className="logout-button" >
+        <button className='logout-button' onClick={logout}>
           Logout
         </button>
       </div>
       {/* User Management */}
-      <div className="user-management">
+      <div className='user-management'>
         <h3>User Management</h3>
         <p>Feature coming soon...</p>
-       {/* <table className="user_table">
+        {/* <table className="user_table">
           <thead>
             <tr>
               <th>ID</th>
@@ -129,17 +125,17 @@ const Dashboard = () => {
       </div>
 
       {/* Role-based message */}
-      <div className="role-based-view">
+      <div className='role-based-view'>
         <h3>Role-based Dashboard</h3>
         <p>Specific views for roles will be added here.</p>
-       {/* {user.role === "inhabitant" && (
+        {/* {user.role === "inhabitant" && (
           <div className="section">
             <h3>🏠 Inhabitant View</h3>
             <p>You’ve generated 18.2 kg of waste this week.</p>
             <p>Breakdown: Organic: 45%, Plastic: 35%, Others: 20%</p>
           </div>
         )}*/}
-   {   /*  {user.role === "caretaker" && (
+        {/*  {user.role === "caretaker" && (
            <div className="section">
            <h3>🧹 Caretaker Dashboard</h3>
            <p>Building waste fill level: 72%</p>
@@ -186,10 +182,10 @@ const Dashboard = () => {
       </div>
 
       {/* Dashboard Metrics */}
-      <div className="metrics-grid">
-        <h3 className="metrics-title">Dashboard Metrics</h3>
+      <div className='metrics-grid'>
+        <h3 className='metrics-title'>Dashboard Metrics</h3>
         <p>Metrics will be displayed here once available.</p>
-       {/*<MetricCard label="Total Waste Collected" value="617.0" unit="Kilo Tonnes" />
+        {/*<MetricCard label="Total Waste Collected" value="617.0" unit="Kilo Tonnes" />
         <MetricCard label="Uncollected Waste" value="584.0" unit="Kilo Tonnes" />
         <MetricCard label="Avg Fill Level" value="50%" />
         <MetricCard label="Carbon Footprint" value="1,236.0" unit="MgCO2" />
@@ -200,10 +196,10 @@ const Dashboard = () => {
       </div>
 
       {/* Map and Chart */}
-      <div className="charts-section">
-        <h3 className="charts-title">Map and Chart Overview</h3>
+      <div className='charts-section'>
+        <h3 className='charts-title'>Map and Chart Overview</h3>
         <p>Map and chart components will be added here.</p>
-       { /*<div className="chart-box">
+        {/*<div className="chart-box">
           <h3 className="chart-title">Map Overview</h3>
           <div className="chart-placeholder">[Map Component Here]</div>
         </div>
@@ -214,10 +210,10 @@ const Dashboard = () => {
       </div>
 
       {/* Ticket Log */}
-      <div className="ticket-log">
-        <h3 className="log-title">Ticket Log</h3>
+      <div className='ticket-log'>
+        <h3 className='log-title'>Ticket Log</h3>
         <p>Ticket log will be displayed here once available.</p>
-      { /* <table className="log-table">
+        {/* <table className="log-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -242,20 +238,19 @@ const Dashboard = () => {
               </tr>
             ))}
           </tbody>
-        </table>*/} 
+        </table>*/}
       </div>
     </div>
   );
-}
+};
 
 const MetricCard = ({ label, value, unit }) => (
-  <div className="metric-card">
-    <p className="metric-label">{label}</p>
-    <p className="metric-value">
-      {value} <span className="metric-unit">{unit || ""}</span>
+  <div className='metric-card'>
+    <p className='metric-label'>{label}</p>
+    <p className='metric-value'>
+      {value} <span className='metric-unit'>{unit || ""}</span>
     </p>
   </div>
 );
 
-
-export default Dashboard
+export default Dashboard;
